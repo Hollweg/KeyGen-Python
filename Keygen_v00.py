@@ -1,3 +1,9 @@
+''' 
+Python Key Generator
+desenvolvido por: Guilherme Hollweg
+Data: 04/06/2015
+Ultima modificacao: 10/08/2015
+'''    
 
 import random
 #import Tkinter
