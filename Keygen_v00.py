@@ -1,9 +1,12 @@
-''' 
-Python Key Generator
-desenvolvido por: Guilherme Hollweg
-Data: 04/06/2015
-Ultima modificacao: 10/08/2015
-'''    
+'''
+//*******************                         Python Key Generator                     **********//
+//*******************               Codigo desenvolvido por Guilherme Hollweg          **********//
+//*******************                        Ultima modificacao:                       **********//
+//*******************                         08/2015    15:15h                        **********//
+//*******************                    Disponível em github.com/Hollweg              **********//
+//***********************************************************************************************//
+//***********************************************************************************************//
+'''
 
 import random
 #import Tkinter
