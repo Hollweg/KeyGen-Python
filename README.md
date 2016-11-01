@@ -21,7 +21,7 @@ The generation key algorithm works in the following form:
 
 ##Copyright
 
-**The project can be reproduced with no problem.**
+**The project can be reproduced with no problem.** </br>
 However, I only ask you to **mantain original credits/references to the author.**
 
 
