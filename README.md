@@ -1,15 +1,15 @@
-#KeyGen-Python
+# KeyGen-Python
 
-##The purpose
+## The purpose
 
 Software for **pseudo-random keys generation using python language.**
 
-##Utility
+## Utility
 
 The algorithm objective is the key generation in a **pseudo-random** way that can be implemented in simple ambients that involve **information security**. </br>
 The Keygen uses a seed based in a list of 16 inputs, having 4 bits each.
 
-##How it works?
+## How it works?
 
 The generation key algorithm works in the following form: 
 
@@ -19,7 +19,7 @@ The generation key algorithm works in the following form:
 4. There is a possibility of the algorithm contain less than 10 digits. If this occurs, the process is redone, and are generated new words. </br>
 5. Returns the generated key in the format: "XXXXXXXXXX", where X is a number (0-9) or a capital letter from A to F, with a minimum size of 10 characters each key. 
 
-##Copyright
+## Copyright
 
 **The project can be reproduced with no problem.** </br>
 However, I only ask you to **mantain original credits/references to the author.**

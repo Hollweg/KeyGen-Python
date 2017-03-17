@@ -1,14 +1,14 @@
 # KeyGen-Python
 
-##A proposta
+## A proposta
 
 Software para geração de chaves pseudo-randômicas utilizando a linguagem *Python*.
 
-##Utilidade
+## Utilidade
 
 O objetivo do código é a geração de uma chave **pseudo-randômica**, que possa ser implementada em ambientes simples que envolvam **segurança de sistemas**.O KeyGen utiliza uma seed baseada em um lista de 16 entradas, contendo 4 bits cada.
 
-##Como funciona?
+## Como funciona?
 
 O algoritmo de geração de senhas funciona da seguinte forma:
 
