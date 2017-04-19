@@ -1,53 +1,67 @@
-'''
-//*******************                         Python Key Generator                     **********//
-//*******************               Codigo desenvolvido por Guilherme Hollweg          **********//
-//*******************                        Ultima modificacao:                       **********//
-//*******************                         08/2015    15:15h                        **********//
-//*******************                    Disponível em github.com/Hollweg              **********//
-//***********************************************************************************************//
-//***********************************************************************************************//
-'''
+
+# Python Key Generator 
+# Developed by Guilherme Hollweg - Electrical Engineer
+
+# Using PEP 8 -- Style Guide for Python Code
+# https://www.python.org/dev/peps/pep-0008/
+# Last Modified on 18/04/2017 (PEP 8 format)
 
 import random
 import Tkinter
 from Tkconstants import *
 
-#inicializacao de variaveis
-list_crypt = []
-list_gen = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-list_key = [0] * len(list_gen)
-list_key_final = ""
+# Vars initialization
+listCrypt = []
+listGen = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+listKey = [0] * len(listGen)
+listKeyFinal = ""
+
 
 class KeyGeneration(object):    
     
-    # algoritmo de geracao de matriz
-    def geraMatriz (self):
-        global list_gen
-        list_gen = [random.randint(0,9), random.randint(0,9), random.randint(0,9), \
-                    random.randint(0,9), random.randint(0,9), random.randint(0,9), \
-                    random.randint(0,9), random.randint(0,9), random.randint(0,9), \
-                    random.randint(0,9), random.randint(0,9), random.randint(0,9), \
-                    random.randint(0,9), random.randint(0,9), random.randint(0,9), \
-                    random.randint(0,9)]
-        return list_gen
+    # Matrix generation algorithm
+    def matrix_generation (self):
+        global listGen
+        listGen = [random.randint(0,9), \
+                   random.randint(0,9), \
+                   random.randint(0,9), \
+                   random.randint(0,9), \
+                   random.randint(0,9), \
+                   random.randint(0,9), \
+                   random.randint(0,9), \
+                   random.randint(0,9), \
+                   random.randint(0,9), \
+                   random.randint(0,9), \
+                   random.randint(0,9), \
+                   random.randint(0,9), \
+                   random.randint(0,9), \
+                   random.randint(0,9), \
+                   random.randint(0,9), \
+                   random.randint(0,9)]
 
-    # algoritmo de geracao de senha
-    def algoritmoSenha (self):
-        global list_key
-        for indice_lista in range(0, len(list_gen)):
-            list_key[indice_lista] = (list_gen[indice_lista]^2) %2
-        return list_key
+        return listGen
 
-    # Geracao da Cripto
-    # Truncagem dos valores em int e conversao de base para hex
-    def criptoSenha(self):
-        global list_key
-        global list_key_final
 
-        list_key_final = ""
-        for indice_lista in range(0, len(list_key)):
-            list_key_final += str(list_key[indice_lista])
-        crypt = hex(int (list_key_final))
+    # Key generation algorithm
+    def key_algorithm (self):
+        global listKey
+
+        for indList in range(0, len(listGen)):
+            listKey[indList] = (listGen[indList] ^ 2) % 2
+        
+        return listKey
+
+
+    # Cryptography generation
+    # Int trunking and conversion to hex(base)
+    def password_crypt(self):
+        global listKey, listKeyFinal
+
+        listKeyFinal = ""
+        for indList in range(0, len(listKey)):
+            listKeyFinal += str(listKey[indList])
+
+        crypt = hex(int (listKeyFinal))
         crypt = crypt.replace ("0x", "")
         crypt = crypt.replace ("a", "A")
         crypt = crypt.replace ("b", "B")
@@ -56,30 +70,30 @@ class KeyGeneration(object):
         crypt = crypt.replace ("e", "E")
         crypt = crypt.replace ("f", "F")
 
-        if len(crypt) <10:
+        if len(crypt) < 10:
             return
+
         return crypt
 
-    # Geracao de Keys de acordo com o numero
-    # de entrada fornecido pelo usuario
-    def geraKeys (self, numKey):
-        global crypt
-        global list_crypt
-        i = 0
+
+    # Keys generation according with user input number
+    def generate_keys (self, numKey):
+        global crypt, listCrypt
         
         for i in range(0, int(numKey)):
             KeyGen = KeyGeneration()
-            matriz = KeyGen.geraMatriz()
-            algoritmo = KeyGen.algoritmoSenha()
-            crypt = KeyGen.criptoSenha()
+            matrix = KeyGen.matrix_generation()
+            algorithm = KeyGen.key_algorithm()
+            crypt = KeyGen.password_crypt()
 
             while crypt == None:
-                matriz = KeyGen.geraMatriz()
-                algoritmo = KeyGen.algoritmoSenha()
-                crypt = KeyGen.criptoSenha()
+                matrix = KeyGen.matrix_generation()
+                algorithm = KeyGen.key_algorithm()
+                crypt = KeyGen.password_crypt()
             
-            list_crypt.append (crypt)
+            listCrypt.append (crypt)
             print crypt
+
             f = open('Keys.txt', 'a+')
             f.write("Key #")
             f.write(str(i))
@@ -88,5 +102,6 @@ class KeyGeneration(object):
             f.write('\n')
             f.close()
 
+
 KeyGen = KeyGeneration()
-print KeyGen.geraKeys(5)         
+print KeyGen.generate_keys(5)         
